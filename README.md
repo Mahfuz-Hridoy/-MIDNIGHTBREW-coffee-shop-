@@ -4,7 +4,7 @@ Welcome to **Midnight Brew**, a fully responsive, high-end, premium coffee shop 
 
 ---
 
-## ☕ Visual Preview & Themes
+##  Visual Preview & Themes
 
 The website uses a curated dark palette reflecting a premium roastery atmosphere:
 - **Primary Background**: `#0D0D0D` (Matte black/charcoal canvas)
@@ -16,7 +16,7 @@ The website uses a curated dark palette reflecting a premium roastery atmosphere
 
 ---
 
-## ⚡ Key Features
+##  Key Features
 
 1. **Sticky Glassmorphic Navigation**: Smooth scroll links, active link tracking (via Intersection Observer), responsive mobile slide-out menu drawer, and Call-to-Action button.
 2. **Interactive Hero Section**: Features custom buttons, deep dark gradient filters, and float keyframe CSS-animated coffee beans.
@@ -29,7 +29,7 @@ The website uses a curated dark palette reflecting a premium roastery atmosphere
 
 ---
 
-## 📁 File Structure
+##  File Structure
 
 ```bash
 ├── assets/                  # Directory containing premium generated assets
@@ -51,7 +51,7 @@ The website uses a curated dark palette reflecting a premium roastery atmosphere
 
 ---
 
-## 🚀 How to Run Locally
+##  How to Run Locally
 
 Since the JavaScript relies on local image source calls and Intersection Observers, running the site via a local web server ensures optimal performance:
 

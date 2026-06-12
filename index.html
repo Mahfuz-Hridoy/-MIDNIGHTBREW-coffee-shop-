@@ -1,0 +1,982 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Midnight Brew | Premium Handcrafted Coffee</title>
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Experience premium handcrafted coffee at Midnight Brew. Cozy dark atmosphere, sustainable beans, and expert baristas in a single luxury location.">
+  <meta name="keywords" content="coffee, premium coffee, espresso, midnight brew, local cafe, barista, cold brew">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primaryBg: '#0D0D0D',
+            secondaryBg: '#1A1A1A',
+            coffeeBrown: '#6F4E37',
+            lightCoffee: '#A67B5B',
+            creamAccent: '#E8DCCB',
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            poppins: ['Poppins', 'sans-serif'],
+          },
+          animation: {
+            'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+          }
+        }
+      }
+    }
+  </script>
+  
+  <!-- Custom Core Styling -->
+  <style>
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #0D0D0D;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #6F4E37;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #A67B5B;
+    }
+
+    /* Glassmorphism Styles */
+    .glass-card {
+      background: rgba(26, 26, 26, 0.65);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid rgba(232, 220, 203, 0.08);
+    }
+    
+    .glass-nav {
+      background: rgba(13, 13, 13, 0.8);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(232, 220, 203, 0.05);
+    }
+
+    /* Floating coffee beans animation */
+    @keyframes float-slow {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-15px) rotate(10deg); }
+    }
+    @keyframes float-medium {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-25px) rotate(-15deg); }
+    }
+    @keyframes float-fast {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-10px) rotate(5deg); }
+    }
+
+    .bean-float-1 { animation: float-slow 7s ease-in-out infinite; }
+    .bean-float-2 { animation: float-medium 9s ease-in-out infinite; }
+    .bean-float-3 { animation: float-fast 5s ease-in-out infinite; }
+
+    /* Scroll Reveal animations */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .reveal.revealed {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Glowing Hover Effects */
+    .glow-hover:hover {
+      box-shadow: 0 0 25px rgba(166, 123, 91, 0.35);
+      border-color: rgba(166, 123, 91, 0.6);
+      transform: translateY(-6px);
+    }
+
+    /* Active Link Accent Underline */
+    .nav-link {
+      position: relative;
+    }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -4px;
+      left: 0;
+      background-color: #A67B5B;
+      transition: width 0.3s ease;
+    }
+    .nav-link.active-link::after {
+      width: 100%;
+    }
+    .nav-link.active-link {
+      color: #E8DCCB;
+    }
+  </style>
+</head>
+<body class="bg-primaryBg text-gray-200 font-sans selection:bg-coffeeBrown selection:text-white overflow-x-hidden">
+
+  <!-- 1. NAVBAR -->
+  <header id="navbar" class="fixed top-0 left-0 w-full z-50 transition-all duration-300 py-5 bg-transparent">
+    <div class="max-w-7xl mx-auto px-6 lg:px-12 flex justify-between items-center">
+      <!-- Logo -->
+      <a href="#home" class="flex items-center space-x-3 group">
+        <div class="w-10 h-10 rounded-full bg-coffeeBrown flex items-center justify-center text-creamAccent shadow-lg group-hover:scale-110 transition-transform duration-300">
+          <i class="fa-solid fa-mug-hot text-lg"></i>
+        </div>
+        <span class="font-poppins font-bold text-xl tracking-wider text-white group-hover:text-creamAccent transition-colors">
+          MIDNIGHT<span class="text-lightCoffee">BREW</span>
+        </span>
+      </a>
+
+      <!-- Desktop Navigation Menu -->
+      <nav class="hidden md:flex items-center space-x-8">
+        <a href="#home" class="nav-link font-medium text-sm text-gray-400 hover:text-white transition-colors uppercase tracking-wider py-1">Home</a>
+        <a href="#menu" class="nav-link font-medium text-sm text-gray-400 hover:text-white transition-colors uppercase tracking-wider py-1">Menu</a>
+        <a href="#why-us" class="nav-link font-medium text-sm text-gray-400 hover:text-white transition-colors uppercase tracking-wider py-1">Why Us</a>
+        <a href="#about" class="nav-link font-medium text-sm text-gray-400 hover:text-white transition-colors uppercase tracking-wider py-1">About</a>
+        <a href="#gallery" class="nav-link font-medium text-sm text-gray-400 hover:text-white transition-colors uppercase tracking-wider py-1">Gallery</a>
+        <a href="#testimonials" class="nav-link font-medium text-sm text-gray-400 hover:text-white transition-colors uppercase tracking-wider py-1">Reviews</a>
+        <a href="#contact" class="nav-link font-medium text-sm text-gray-400 hover:text-white transition-colors uppercase tracking-wider py-1">Contact</a>
+      </nav>
+
+      <!-- Right Side CTA -->
+      <div class="hidden md:flex items-center">
+        <a href="#menu" class="px-6 py-2.5 rounded-full bg-coffeeBrown text-creamAccent font-poppins font-semibold text-sm border border-[#A67B5B]/30 hover:bg-lightCoffee hover:text-primaryBg hover:shadow-lg hover:shadow-lightCoffee/20 transition-all duration-300">
+          Order Now
+        </a>
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <button id="mobile-menu-btn" class="md:hidden text-white hover:text-creamAccent focus:outline-none transition-colors" aria-label="Toggle Menu">
+        <i class="fa-solid fa-bars-staggered text-2xl"></i>
+      </button>
+    </div>
+
+    <!-- Mobile Drawer Overlay Menu -->
+    <div id="mobile-drawer" class="fixed inset-0 top-[77px] bg-primaryBg/95 backdrop-blur-lg transform translate-x-full transition-transform duration-300 ease-in-out md:hidden z-40 flex flex-col justify-between py-12 px-8 border-t border-white/5">
+      <nav class="flex flex-col space-y-6 text-center">
+        <a href="#home" class="mobile-nav-link text-xl font-poppins font-medium text-gray-300 hover:text-creamAccent transition-colors">Home</a>
+        <a href="#menu" class="mobile-nav-link text-xl font-poppins font-medium text-gray-300 hover:text-creamAccent transition-colors">Menu</a>
+        <a href="#why-us" class="mobile-nav-link text-xl font-poppins font-medium text-gray-300 hover:text-creamAccent transition-colors">Why Us</a>
+        <a href="#about" class="mobile-nav-link text-xl font-poppins font-medium text-gray-300 hover:text-creamAccent transition-colors">About</a>
+        <a href="#gallery" class="mobile-nav-link text-xl font-poppins font-medium text-gray-300 hover:text-creamAccent transition-colors">Gallery</a>
+        <a href="#testimonials" class="mobile-nav-link text-xl font-poppins font-medium text-gray-300 hover:text-creamAccent transition-colors">Reviews</a>
+        <a href="#contact" class="mobile-nav-link text-xl font-poppins font-medium text-gray-300 hover:text-creamAccent transition-colors">Contact</a>
+      </nav>
+      <div class="flex flex-col items-center space-y-6">
+        <a href="#menu" class="w-full text-center px-8 py-3.5 rounded-full bg-coffeeBrown text-creamAccent font-poppins font-semibold border border-[#A67B5B]/30 hover:bg-lightCoffee hover:text-primaryBg transition-all">
+          Order Now
+        </a>
+        <div class="flex space-x-6 text-gray-400">
+          <a href="#" class="hover:text-creamAccent"><i class="fa-brands fa-instagram text-xl"></i></a>
+          <a href="#" class="hover:text-creamAccent"><i class="fa-brands fa-facebook text-xl"></i></a>
+          <a href="#" class="hover:text-creamAccent"><i class="fa-brands fa-x-twitter text-xl"></i></a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- 2. HERO SECTION -->
+  <section id="home" class="relative min-h-screen flex items-center justify-center pt-24 pb-12 overflow-hidden bg-black">
+    <!-- Hero Background Image with Dark Overlays -->
+    <div class="absolute inset-0 z-0">
+      <img src="assets/hero_bg.png" alt="Midnight Brew Café Interior" class="w-full h-full object-cover opacity-50 scale-105 transform">
+      <!-- Dark gradients to make content stand out and blend with page -->
+      <div class="absolute inset-0 bg-gradient-to-t from-primaryBg via-primaryBg/70 to-transparent"></div>
+      <div class="absolute inset-0 bg-gradient-to-r from-primaryBg via-transparent to-primaryBg/60"></div>
+    </div>
+
+    <!-- Floating Coffee Beans Animations -->
+    <div class="absolute inset-0 pointer-events-none z-10 hidden sm:block">
+      <!-- Bean 1 -->
+      <svg class="absolute top-[20%] left-[10%] w-8 h-8 text-coffeeBrown/40 bean-float-1" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12,2C10.07,2 7.5,3.67 6.17,5.5C4.83,7.33 4,9.67 4,12C4,14.33 4.83,16.67 6.17,18.5C7.5,20.33 10.07,22 12,22C13.93,22 16.5,20.33 17.83,18.5C19.17,16.67 20,14.33 20,12C20,9.67 19.17,7.33 17.83,5.5C16.5,3.67 13.93,2 12,2M12,4C12.87,4 14.5,5.17 15.33,6.5C16.17,7.83 16.5,9.67 16.17,11C15.83,12.33 14.67,13.67 13.33,14.5C12,15.33 10.17,15.67 9,15.33C7.83,15 6.83,13.83 6.33,12.5C5.83,11.17 5.83,9.33 6.33,8C6.83,6.67 8.33,5.33 9.67,4.5C11,3.67 11.5,4 12,4Z"/>
+      </svg>
+      <!-- Bean 2 -->
+      <svg class="absolute bottom-[25%] right-[15%] w-10 h-10 text-lightCoffee/30 bean-float-2" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12,2C10.07,2 7.5,3.67 6.17,5.5C4.83,7.33 4,9.67 4,12C4,14.33 4.83,16.67 6.17,18.5C7.5,20.33 10.07,22 12,22C13.93,22 16.5,20.33 17.83,18.5C19.17,16.67 20,14.33 20,12C20,9.67 19.17,7.33 17.83,5.5C16.5,3.67 13.93,2 12,2M12,4C12.87,4 14.5,5.17 15.33,6.5C16.17,7.83 16.5,9.67 16.17,11C15.83,12.33 14.67,13.67 13.33,14.5C12,15.33 10.17,15.67 9,15.33C7.83,15 6.83,13.83 6.33,12.5C5.83,11.17 5.83,9.33 6.33,8C6.83,6.67 8.33,5.33 9.67,4.5C11,3.67 11.5,4 12,4Z"/>
+      </svg>
+      <!-- Bean 3 -->
+      <svg class="absolute top-[35%] right-[30%] w-6 h-6 text-creamAccent/25 bean-float-3" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12,2C10.07,2 7.5,3.67 6.17,5.5C4.83,7.33 4,9.67 4,12C4,14.33 4.83,16.67 6.17,18.5C7.5,20.33 10.07,22 12,22C13.93,22 16.5,20.33 17.83,18.5C19.17,16.67 20,14.33 20,12C20,9.67 19.17,7.33 17.83,5.5C16.5,3.67 13.93,2 12,2M12,4C12.87,4 14.5,5.17 15.33,6.5C16.17,7.83 16.5,9.67 16.17,11C15.83,12.33 14.67,13.67 13.33,14.5C12,15.33 10.17,15.67 9,15.33C7.83,15 6.83,13.83 6.33,12.5C5.83,11.17 5.83,9.33 6.33,8C6.83,6.67 8.33,5.33 9.67,4.5C11,3.67 11.5,4 12,4Z"/>
+      </svg>
+    </div>
+
+    <!-- Content -->
+    <div class="relative z-20 max-w-5xl mx-auto px-6 text-center flex flex-col items-center">
+      <!-- Sub-badge -->
+      <div class="inline-flex items-center space-x-2 bg-coffeeBrown/20 border border-coffeeBrown/40 px-4 py-1.5 rounded-full mb-6 scroll-reveal animate-pulse-slow">
+        <span class="w-2 h-2 rounded-full bg-lightCoffee"></span>
+        <span class="text-xs uppercase tracking-widest text-creamAccent font-poppins font-medium">Est. 2016 • Luxury Roastery</span>
+      </div>
+
+      <!-- Main Heading -->
+      <h1 class="font-poppins font-extrabold text-4xl sm:text-6xl md:text-7xl lg:text-8xl tracking-tight text-white mb-6 leading-[1.1]">
+        Crafted Coffee <br>
+        <span class="text-transparent bg-clip-text bg-gradient-to-r from-lightCoffee via-creamAccent to-coffeeBrown">for Every Moment</span>
+      </h1>
+
+      <!-- Subtitle -->
+      <p class="max-w-2xl text-gray-300 text-base sm:text-lg md:text-xl font-light leading-relaxed mb-10">
+        Experience premium, artisanal coffee meticulously roasted and handcrafted by world-class, passionate baristas. Elevate your daily ritual.
+      </p>
+
+      <!-- Action Buttons -->
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 w-full sm:w-auto">
+        <a href="#menu" class="w-full sm:w-auto px-8 py-4 rounded-full bg-gradient-to-r from-coffeeBrown to-lightCoffee text-white font-poppins font-semibold shadow-lg shadow-coffeeBrown/30 hover:shadow-lightCoffee/20 hover:scale-105 transition-all duration-300 text-center">
+          Explore Menu
+        </a>
+        <a href="#contact" class="w-full sm:w-auto px-8 py-4 rounded-full bg-transparent text-creamAccent border border-creamAccent/30 font-poppins font-semibold hover:bg-creamAccent hover:text-primaryBg hover:border-creamAccent transition-all duration-300 text-center">
+          Visit Us
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. FEATURED COFFEE SECTION -->
+  <section id="menu" class="py-24 sm:py-32 bg-primaryBg border-t border-white/5 relative">
+    <div class="max-w-7xl mx-auto px-6 lg:px-12">
+      <!-- Section Header -->
+      <div class="text-center max-w-2xl mx-auto mb-20 reveal">
+        <span class="text-lightCoffee font-poppins text-xs font-semibold tracking-widest uppercase block mb-3">Midnight Classics</span>
+        <h2 class="font-poppins font-extrabold text-3xl sm:text-5xl text-white mb-4">Our Signature Brews</h2>
+        <div class="w-20 h-1 bg-gradient-to-r from-coffeeBrown to-lightCoffee mx-auto mb-6"></div>
+        <p class="text-gray-400 font-light text-sm sm:text-base">Indulge in our carefully selected single-origin and premium blends, crafted at precise temperatures for ultimate flavor profiles.</p>
+      </div>
+
+      <!-- Coffee Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Item 1: Espresso -->
+        <div class="glass-card rounded-2xl overflow-hidden p-5 flex flex-col justify-between transition-all duration-300 glow-hover reveal">
+          <div>
+            <div class="relative rounded-xl overflow-hidden mb-5 aspect-[4/3] group">
+              <img src="assets/coffee_espresso.png" alt="Espresso" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+              <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                <span class="text-xs text-creamAccent uppercase tracking-widest font-semibold font-poppins"><i class="fa-solid fa-mug-hot mr-1"></i> Bold & Intense</span>
+              </div>
+            </div>
+            <div class="flex justify-between items-start mb-2">
+              <h3 class="font-poppins font-bold text-xl text-white">Espresso</h3>
+              <span class="text-lightCoffee font-poppins font-bold text-lg">$3.50</span>
+            </div>
+            <p class="text-gray-400 text-sm font-light leading-relaxed mb-6">
+              A concentrated, full-bodied shot of rich coffee with a thick, golden layer of crema on top. Pure extraction.
+            </p>
+          </div>
+          <button onclick="addToCart(this, 'Espresso', 3.50)" class="w-full py-3 rounded-xl bg-secondaryBg hover:bg-coffeeBrown text-creamAccent hover:text-white font-poppins font-semibold text-xs border border-white/5 hover:border-coffeeBrown transition-all duration-300 flex items-center justify-center space-x-2">
+            <i class="fa-solid fa-cart-shopping text-xs"></i>
+            <span>Add to Cart</span>
+          </button>
+        </div>
+
+        <!-- Item 2: Cappuccino -->
+        <div class="glass-card rounded-2xl overflow-hidden p-5 flex flex-col justify-between transition-all duration-300 glow-hover reveal">
+          <div>
+            <div class="relative rounded-xl overflow-hidden mb-5 aspect-[4/3] group">
+              <img src="assets/coffee_latte.png" alt="Cappuccino" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+              <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                <span class="text-xs text-creamAccent uppercase tracking-widest font-semibold font-poppins"><i class="fa-solid fa-mug-hot mr-1"></i> Creamy & Balanced</span>
+              </div>
+            </div>
+            <div class="flex justify-between items-start mb-2">
+              <h3 class="font-poppins font-bold text-xl text-white">Cappuccino</h3>
+              <span class="text-lightCoffee font-poppins font-bold text-lg">$4.50</span>
+            </div>
+            <p class="text-gray-400 text-sm font-light leading-relaxed mb-6">
+              An equal distribution of espresso, steamed milk, and a luxurious cloud of milk foam, topped with cocoa powder.
+            </p>
+          </div>
+          <button onclick="addToCart(this, 'Cappuccino', 4.50)" class="w-full py-3 rounded-xl bg-secondaryBg hover:bg-coffeeBrown text-creamAccent hover:text-white font-poppins font-semibold text-xs border border-white/5 hover:border-coffeeBrown transition-all duration-300 flex items-center justify-center space-x-2">
+            <i class="fa-solid fa-cart-shopping text-xs"></i>
+            <span>Add to Cart</span>
+          </button>
+        </div>
+
+        <!-- Item 3: Latte -->
+        <div class="glass-card rounded-2xl overflow-hidden p-5 flex flex-col justify-between transition-all duration-300 glow-hover reveal">
+          <div>
+            <div class="relative rounded-xl overflow-hidden mb-5 aspect-[4/3] group">
+              <img src="assets/coffee_latte.png" alt="Caffè Latte" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+              <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                <span class="text-xs text-creamAccent uppercase tracking-widest font-semibold font-poppins"><i class="fa-solid fa-mug-hot mr-1"></i> Smooth & Velvet</span>
+              </div>
+            </div>
+            <div class="flex justify-between items-start mb-2">
+              <h3 class="font-poppins font-bold text-xl text-white">Caffè Latte</h3>
+              <span class="text-lightCoffee font-poppins font-bold text-lg">$4.25</span>
+            </div>
+            <p class="text-gray-400 text-sm font-light leading-relaxed mb-6">
+              Rich espresso layered with fresh steamed milk, capped with a thin layer of velvety microfoam and custom barista art.
+            </p>
+          </div>
+          <button onclick="addToCart(this, 'Caffè Latte', 4.25)" class="w-full py-3 rounded-xl bg-secondaryBg hover:bg-coffeeBrown text-creamAccent hover:text-white font-poppins font-semibold text-xs border border-white/5 hover:border-coffeeBrown transition-all duration-300 flex items-center justify-center space-x-2">
+            <i class="fa-solid fa-cart-shopping text-xs"></i>
+            <span>Add to Cart</span>
+          </button>
+        </div>
+
+        <!-- Item 4: Americano -->
+        <div class="glass-card rounded-2xl overflow-hidden p-5 flex flex-col justify-between transition-all duration-300 glow-hover reveal">
+          <div>
+            <div class="relative rounded-xl overflow-hidden mb-5 aspect-[4/3] group">
+              <img src="assets/coffee_espresso.png" alt="Americano" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+              <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                <span class="text-xs text-creamAccent uppercase tracking-widest font-semibold font-poppins"><i class="fa-solid fa-mug-hot mr-1"></i> Classic & Clean</span>
+              </div>
+            </div>
+            <div class="flex justify-between items-start mb-2">
+              <h3 class="font-poppins font-bold text-xl text-white">Americano</h3>
+              <span class="text-lightCoffee font-poppins font-bold text-lg">$3.75</span>
+            </div>
+            <p class="text-gray-400 text-sm font-light leading-relaxed mb-6">
+              Premium shots of espresso hot-extracted directly over hot water, maintaining the complex notes of the bean.
+            </p>
+          </div>
+          <button onclick="addToCart(this, 'Americano', 3.75)" class="w-full py-3 rounded-xl bg-secondaryBg hover:bg-coffeeBrown text-creamAccent hover:text-white font-poppins font-semibold text-xs border border-white/5 hover:border-coffeeBrown transition-all duration-300 flex items-center justify-center space-x-2">
+            <i class="fa-solid fa-cart-shopping text-xs"></i>
+            <span>Add to Cart</span>
+          </button>
+        </div>
+
+        <!-- Item 5: Mocha -->
+        <div class="glass-card rounded-2xl overflow-hidden p-5 flex flex-col justify-between transition-all duration-300 glow-hover reveal">
+          <div>
+            <div class="relative rounded-xl overflow-hidden mb-5 aspect-[4/3] group">
+              <img src="assets/coffee_latte.png" alt="Caffè Mocha" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+              <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                <span class="text-xs text-creamAccent uppercase tracking-widest font-semibold font-poppins"><i class="fa-solid fa-mug-hot mr-1"></i> Sweet Cocoa Roast</span>
+              </div>
+            </div>
+            <div class="flex justify-between items-start mb-2">
+              <h3 class="font-poppins font-bold text-xl text-white">Caffè Mocha</h3>
+              <span class="text-lightCoffee font-poppins font-bold text-lg">$4.75</span>
+            </div>
+            <p class="text-gray-400 text-sm font-light leading-relaxed mb-6">
+              A delicious combination of espresso, premium dark chocolate sauce, and steamed milk, finished with whipped cream.
+            </p>
+          </div>
+          <button onclick="addToCart(this, 'Caffè Mocha', 4.75)" class="w-full py-3 rounded-xl bg-secondaryBg hover:bg-coffeeBrown text-creamAccent hover:text-white font-poppins font-semibold text-xs border border-white/5 hover:border-coffeeBrown transition-all duration-300 flex items-center justify-center space-x-2">
+            <i class="fa-solid fa-cart-shopping text-xs"></i>
+            <span>Add to Cart</span>
+          </button>
+        </div>
+
+        <!-- Item 6: Cold Brew -->
+        <div class="glass-card rounded-2xl overflow-hidden p-5 flex flex-col justify-between transition-all duration-300 glow-hover reveal">
+          <div>
+            <div class="relative rounded-xl overflow-hidden mb-5 aspect-[4/3] group">
+              <img src="assets/coffee_cold_brew.png" alt="Cold Brew" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+              <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                <span class="text-xs text-creamAccent uppercase tracking-widest font-semibold font-poppins"><i class="fa-solid fa-snowflake mr-1"></i> Slow-Steeped Ice</span>
+              </div>
+            </div>
+            <div class="flex justify-between items-start mb-2">
+              <h3 class="font-poppins font-bold text-xl text-white">Signature Cold Brew</h3>
+              <span class="text-lightCoffee font-poppins font-bold text-lg">$5.00</span>
+            </div>
+            <p class="text-gray-400 text-sm font-light leading-relaxed mb-6">
+              Single-origin coarse coffee beans steeped in cold mountain spring water for 18 hours. Smooth, low acidity, naturally sweet.
+            </p>
+          </div>
+          <button onclick="addToCart(this, 'Cold Brew', 5.00)" class="w-full py-3 rounded-xl bg-secondaryBg hover:bg-coffeeBrown text-creamAccent hover:text-white font-poppins font-semibold text-xs border border-white/5 hover:border-coffeeBrown transition-all duration-300 flex items-center justify-center space-x-2">
+            <i class="fa-solid fa-cart-shopping text-xs"></i>
+            <span>Add to Cart</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. WHY CHOOSE US SECTION -->
+  <section id="why-us" class="py-24 sm:py-32 bg-secondaryBg relative overflow-hidden">
+    <!-- Overlay decoration -->
+    <div class="absolute top-0 right-0 w-96 h-96 bg-coffeeBrown/5 rounded-full filter blur-3xl pointer-events-none"></div>
+    <div class="absolute bottom-0 left-0 w-96 h-96 bg-lightCoffee/5 rounded-full filter blur-3xl pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
+      <!-- Section Header -->
+      <div class="text-center max-w-2xl mx-auto mb-20 reveal">
+        <span class="text-lightCoffee font-poppins text-xs font-semibold tracking-widest uppercase block mb-3">Craft Excellence</span>
+        <h2 class="font-poppins font-extrabold text-3xl sm:text-5xl text-white mb-4">Why Coffee Connoisseurs Choose Us</h2>
+        <div class="w-20 h-1 bg-gradient-to-r from-coffeeBrown to-lightCoffee mx-auto mb-6"></div>
+        <p class="text-gray-400 font-light text-sm sm:text-base">We prioritize the finest quality in every single drop, focusing on environmental sustainability and roasting precision.</p>
+      </div>
+
+      <!-- Feature Grid -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        <!-- Feature 1 -->
+        <div class="glass-card rounded-2xl p-8 text-center transition-all duration-300 hover:scale-105 border border-white/5 reveal">
+          <div class="w-16 h-16 rounded-full bg-coffeeBrown/10 text-lightCoffee border border-lightCoffee/20 flex items-center justify-center text-3xl mx-auto mb-6">
+            ☕
+          </div>
+          <h3 class="font-poppins font-bold text-lg text-white mb-3">Premium Beans</h3>
+          <p class="text-gray-400 text-sm font-light leading-relaxed">
+            Directly sourced, top-grade Arabica and Robusta beans selected for unique, complex regional flavors.
+          </p>
+        </div>
+
+        <!-- Feature 2 -->
+        <div class="glass-card rounded-2xl p-8 text-center transition-all duration-300 hover:scale-105 border border-white/5 reveal">
+          <div class="w-16 h-16 rounded-full bg-coffeeBrown/10 text-lightCoffee border border-lightCoffee/20 flex items-center justify-center text-3xl mx-auto mb-6">
+            🌎
+          </div>
+          <h3 class="font-poppins font-bold text-lg text-white mb-3">Sustainable Sourcing</h3>
+          <p class="text-gray-400 text-sm font-light leading-relaxed">
+            Supporting ethical farming, fair-trade practices, and environmentally sustainable agriculture models.
+          </p>
+        </div>
+
+        <!-- Feature 3 -->
+        <div class="glass-card rounded-2xl p-8 text-center transition-all duration-300 hover:scale-105 border border-white/5 reveal">
+          <div class="w-16 h-16 rounded-full bg-coffeeBrown/10 text-lightCoffee border border-lightCoffee/20 flex items-center justify-center text-3xl mx-auto mb-6">
+            👨‍🍳
+          </div>
+          <h3 class="font-poppins font-bold text-lg text-white mb-3">Expert Baristas</h3>
+          <p class="text-gray-400 text-sm font-light leading-relaxed">
+            Experienced, award-winning artisans passionate about crafting the perfect cup with visual finesse.
+          </p>
+        </div>
+
+        <!-- Feature 4 -->
+        <div class="glass-card rounded-2xl p-8 text-center transition-all duration-300 hover:scale-105 border border-white/5 reveal">
+          <div class="w-16 h-16 rounded-full bg-coffeeBrown/10 text-lightCoffee border border-lightCoffee/20 flex items-center justify-center text-3xl mx-auto mb-6">
+            🚚
+          </div>
+          <h3 class="font-poppins font-bold text-lg text-white mb-3">Fast Service</h3>
+          <p class="text-gray-400 text-sm font-light leading-relaxed">
+            Fast, high-end brewing processes to respect your schedule, ensuring premium hot coffee is served instantly.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. ABOUT US SECTION -->
+  <section id="about" class="py-24 sm:py-32 bg-primaryBg border-t border-white/5">
+    <div class="max-w-7xl mx-auto px-6 lg:px-12">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        
+        <!-- Left Side: Coffee Shop Image -->
+        <div class="relative reveal">
+          <!-- Behind Glow decoration -->
+          <div class="absolute -top-6 -left-6 w-full h-full border-2 border-coffeeBrown/30 rounded-2xl -z-10 hidden sm:block"></div>
+          <div class="absolute -bottom-4 -right-4 w-32 h-32 bg-lightCoffee/15 filter blur-2xl rounded-full -z-10"></div>
+          
+          <div class="rounded-2xl overflow-hidden shadow-2xl shadow-black/80 aspect-[4/3] sm:aspect-auto">
+            <img src="assets/about_story.png" alt="Espresso extraction process" class="w-full object-cover">
+          </div>
+        </div>
+
+        <!-- Right Side: Content -->
+        <div class="reveal">
+          <span class="text-lightCoffee font-poppins text-xs font-semibold tracking-widest uppercase block mb-3">Our Legacy</span>
+          <h2 class="font-poppins font-extrabold text-3xl sm:text-5xl text-white mb-6">The Midnight Brew Story</h2>
+          <div class="w-20 h-1 bg-gradient-to-r from-coffeeBrown to-lightCoffee mb-8"></div>
+          
+          <p class="text-gray-300 text-base font-light leading-relaxed mb-6">
+            Founded in 2016, Midnight Brew was born out of a simple, intense obsession: roasting the highest quality single-origin beans and creating an elegant sanctuary for true coffee enthusiasts.
+          </p>
+          <p class="text-gray-400 text-sm font-light leading-relaxed mb-10">
+            Every cup we brew is a meticulously crafted masterpiece. From importing shade-grown beans directly from micro-lot farms in Ethiopia and Colombia to roasting them locally in small batches, we control every detail of the process to unlock the ultimate sensory experience for you.
+          </p>
+
+          <!-- Stat Counters -->
+          <div id="counter-section" class="grid grid-cols-3 gap-6 pt-8 border-t border-white/10">
+            <div>
+              <div class="font-poppins font-extrabold text-3xl sm:text-4xl text-creamAccent mb-1">
+                <span class="stat-counter" data-target="10">0</span>+
+              </div>
+              <p class="text-xs uppercase text-gray-500 tracking-wider">Years Experience</p>
+            </div>
+            
+            <div>
+              <div class="font-poppins font-extrabold text-3xl sm:text-4xl text-creamAccent mb-1">
+                <span class="stat-counter" data-target="5000">0</span>+
+              </div>
+              <p class="text-xs uppercase text-gray-500 tracking-wider">Happy Customers</p>
+            </div>
+            
+            <div>
+              <div class="font-poppins font-extrabold text-3xl sm:text-4xl text-creamAccent mb-1">
+                <span class="stat-counter" data-target="20">0</span>+
+              </div>
+              <p class="text-xs uppercase text-gray-500 tracking-wider">Coffee Varieties</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. COFFEE GALLERY SECTION -->
+  <section id="gallery" class="py-24 sm:py-32 bg-secondaryBg relative">
+    <div class="max-w-7xl mx-auto px-6 lg:px-12">
+      <!-- Section Header -->
+      <div class="text-center max-w-2xl mx-auto mb-20 reveal">
+        <span class="text-lightCoffee font-poppins text-xs font-semibold tracking-widest uppercase block mb-3">Visual Craft</span>
+        <h2 class="font-poppins font-extrabold text-3xl sm:text-5xl text-white mb-4">Midnight Gallery</h2>
+        <div class="w-20 h-1 bg-gradient-to-r from-coffeeBrown to-lightCoffee mx-auto mb-6"></div>
+        <p class="text-gray-400 font-light text-sm sm:text-base">Take a visual journey through our brewing methods, selection process, and elegant atmosphere.</p>
+      </div>
+
+      <!-- Responsive Grid -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
+        <!-- Image 1 -->
+        <div class="relative overflow-hidden rounded-xl aspect-square group cursor-pointer reveal" onclick="openLightbox('assets/hero_bg.png', 'Midnight Brew Café Atmosphere')">
+          <img src="assets/hero_bg.png" alt="Café interior design" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+          <div class="absolute inset-0 bg-primaryBg/75 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center flex-col p-4 text-center">
+            <i class="fa-solid fa-magnifying-glass text-creamAccent text-xl mb-2"></i>
+            <span class="text-sm font-poppins font-semibold text-white">Atmosphere</span>
+          </div>
+        </div>
+
+        <!-- Image 2 -->
+        <div class="relative overflow-hidden rounded-xl aspect-square group cursor-pointer reveal" onclick="openLightbox('assets/about_story.png', 'Pour-Over Brew Process')">
+          <img src="assets/about_story.png" alt="Pour over setup" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+          <div class="absolute inset-0 bg-primaryBg/75 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center flex-col p-4 text-center">
+            <i class="fa-solid fa-magnifying-glass text-creamAccent text-xl mb-2"></i>
+            <span class="text-sm font-poppins font-semibold text-white">Pour-Over Brew</span>
+          </div>
+        </div>
+
+        <!-- Image 3 -->
+        <div class="relative overflow-hidden rounded-xl aspect-square group cursor-pointer reveal" onclick="openLightbox('assets/coffee_espresso.png', 'Single Origin Espresso Shot')">
+          <img src="assets/coffee_espresso.png" alt="Rich Espresso crema" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+          <div class="absolute inset-0 bg-primaryBg/75 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center flex-col p-4 text-center">
+            <i class="fa-solid fa-magnifying-glass text-creamAccent text-xl mb-2"></i>
+            <span class="text-sm font-poppins font-semibold text-white">Artisanal Espresso</span>
+          </div>
+        </div>
+
+        <!-- Image 4 -->
+        <div class="relative overflow-hidden rounded-xl aspect-square group cursor-pointer reveal" onclick="openLightbox('assets/coffee_latte.png', 'Vibrant Cappuccino Microfoam')">
+          <img src="assets/coffee_latte.png" alt="Cappuccino foam art" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+          <div class="absolute inset-0 bg-primaryBg/75 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center flex-col p-4 text-center">
+            <i class="fa-solid fa-magnifying-glass text-creamAccent text-xl mb-2"></i>
+            <span class="text-sm font-poppins font-semibold text-white">Cappuccino Craft</span>
+          </div>
+        </div>
+
+        <!-- Image 5 -->
+        <div class="relative overflow-hidden rounded-xl aspect-square group cursor-pointer reveal" onclick="openLightbox('assets/coffee_cold_brew.png', 'Condensation on Glass Cold Brew')">
+          <img src="assets/coffee_cold_brew.png" alt="Cold brew glass with ice" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+          <div class="absolute inset-0 bg-primaryBg/75 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center flex-col p-4 text-center">
+            <i class="fa-solid fa-magnifying-glass text-creamAccent text-xl mb-2"></i>
+            <span class="text-sm font-poppins font-semibold text-white">Signature Cold Brew</span>
+          </div>
+        </div>
+
+        <!-- Image 6 -->
+        <div class="relative overflow-hidden rounded-xl aspect-square group cursor-pointer reveal" onclick="openLightbox('assets/gallery_beans.png', 'Perfectly Roasted Arabica Beans')">
+          <img src="assets/gallery_beans.png" alt="Roasted coffee beans closeup" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+          <div class="absolute inset-0 bg-primaryBg/75 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center flex-col p-4 text-center">
+            <i class="fa-solid fa-magnifying-glass text-creamAccent text-xl mb-2"></i>
+            <span class="text-sm font-poppins font-semibold text-white">Premium Beans</span>
+          </div>
+        </div>
+
+        <!-- Image 7 -->
+        <div class="relative overflow-hidden rounded-xl aspect-square group cursor-pointer reveal" onclick="openLightbox('assets/gallery_roaster.png', 'Fiery Embers of Roasting Machine')">
+          <img src="assets/gallery_roaster.png" alt="Coffee roaster at work" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+          <div class="absolute inset-0 bg-primaryBg/75 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center flex-col p-4 text-center">
+            <i class="fa-solid fa-magnifying-glass text-creamAccent text-xl mb-2"></i>
+            <span class="text-sm font-poppins font-semibold text-white">Batch Roasting</span>
+          </div>
+        </div>
+
+        <!-- Image 8 -->
+        <div class="relative overflow-hidden rounded-xl aspect-square group cursor-pointer reveal" onclick="openLightbox('assets/gallery_pouring.png', 'Barista Milk Pour Detail')">
+          <img src="assets/gallery_pouring.png" alt="Latte art creation close up" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+          <div class="absolute inset-0 bg-primaryBg/75 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center flex-col p-4 text-center">
+            <i class="fa-solid fa-magnifying-glass text-creamAccent text-xl mb-2"></i>
+            <span class="text-sm font-poppins font-semibold text-white">Latte Pouring</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. TESTIMONIALS SECTION -->
+  <section id="testimonials" class="py-24 sm:py-32 bg-primaryBg border-t border-white/5 relative overflow-hidden">
+    <div class="max-w-6xl mx-auto px-6 lg:px-12 relative z-10">
+      
+      <!-- Section Header -->
+      <div class="text-center max-w-2xl mx-auto mb-20 reveal">
+        <span class="text-lightCoffee font-poppins text-xs font-semibold tracking-widest uppercase block mb-3">Connoisseur Feedback</span>
+        <h2 class="font-poppins font-extrabold text-3xl sm:text-5xl text-white mb-4">What Our Guests Say</h2>
+        <div class="w-20 h-1 bg-gradient-to-r from-coffeeBrown to-lightCoffee mx-auto mb-6"></div>
+      </div>
+
+      <!-- Testimonials Carousel Container -->
+      <div class="relative max-w-4xl mx-auto reveal">
+        <div class="overflow-hidden relative min-h-[360px] sm:min-h-[280px]">
+          <!-- Carousel Items Track -->
+          <div id="carousel-track" class="flex transition-transform duration-700 ease-in-out">
+            <!-- Review 1 -->
+            <div class="w-full flex-shrink-0 px-4">
+              <div class="glass-card rounded-2xl p-8 sm:p-10 flex flex-col md:flex-row items-center md:items-start gap-8 border border-white/5 shadow-xl">
+                <div class="w-20 h-20 sm:w-24 sm:h-24 rounded-full overflow-hidden flex-shrink-0 border-2 border-lightCoffee shadow-lg bg-secondaryBg">
+                  <img src="assets/customer_1.png" alt="Eleanor Vance" class="w-full h-full object-cover">
+                </div>
+                <div>
+                  <div class="flex items-center space-x-1 mb-3 justify-center md:justify-start">
+                    <i class="fa-solid fa-star text-amber-400 text-sm"></i>
+                    <i class="fa-solid fa-star text-amber-400 text-sm"></i>
+                    <i class="fa-solid fa-star text-amber-400 text-sm"></i>
+                    <i class="fa-solid fa-star text-amber-400 text-sm"></i>
+                    <i class="fa-solid fa-star text-amber-400 text-sm"></i>
+                  </div>
+                  <p class="text-gray-300 text-base italic font-light leading-relaxed mb-6 text-center md:text-left">
+                    "Midnight Brew is an absolute sanctuary. The Espresso here possesses a complexity and depth of flavor I've rarely encountered outside of Italy. The dark, elegant, low-lit environment makes it the perfect place to write, think, or simply escape."
+                  </p>
+                  <div class="text-center md:text-left">
+                    <h4 class="font-poppins font-bold text-white text-lg">Eleanor Vance</h4>
+                    <p class="text-xs text-lightCoffee font-poppins uppercase tracking-widest font-medium">Coffee Enthusiast & Writer</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Review 2 -->
+            <div class="w-full flex-shrink-0 px-4">
+              <div class="glass-card rounded-2xl p-8 sm:p-10 flex flex-col md:flex-row items-center md:items-start gap-8 border border-white/5 shadow-xl">
+                <div class="w-20 h-20 sm:w-24 sm:h-24 rounded-full overflow-hidden flex-shrink-0 border-2 border-lightCoffee shadow-lg bg-secondaryBg">
+                  <img src="assets/customer_2.png" alt="Marcus Sterling" class="w-full h-full object-cover">
+                </div>
+                <div>
+                  <div class="flex items-center space-x-1 mb-3 justify-center md:justify-start">
+                    <i class="fa-solid fa-star text-amber-400 text-sm"></i>
+                    <i class="fa-solid fa-star text-amber-400 text-sm"></i>
+                    <i class="fa-solid fa-star text-amber-400 text-sm"></i>
+                    <i class="fa-solid fa-star text-amber-400 text-sm"></i>
+                    <i class="fa-solid fa-star text-amber-400 text-sm"></i>
+                  </div>
+                  <p class="text-gray-300 text-base italic font-light leading-relaxed mb-6 text-center md:text-left">
+                    "The cold brew is smooth, low-acid, and naturally sweet, highlighting the high-quality micro-lots they source. The baristas are true artists—watching them pour a latte is a performance in itself. Highly recommended for purists!"
+                  </p>
+                  <div class="text-center md:text-left">
+                    <h4 class="font-poppins font-bold text-white text-lg">Marcus Sterling</h4>
+                    <p class="text-xs text-lightCoffee font-poppins uppercase tracking-widest font-medium">Gastronomy Journalist</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Review 3 -->
+            <div class="w-full flex-shrink-0 px-4">
+              <div class="glass-card rounded-2xl p-8 sm:p-10 flex flex-col md:flex-row items-center md:items-start gap-8 border border-white/5 shadow-xl">
+                <div class="w-20 h-20 sm:w-24 sm:h-24 rounded-full overflow-hidden flex-shrink-0 border-2 border-lightCoffee shadow-lg bg-secondaryBg">
+                  <img src="assets/customer_3.png" alt="Dr. Clara Thorne" class="w-full h-full object-cover">
+                </div>
+                <div>
+                  <div class="flex items-center space-x-1 mb-3 justify-center md:justify-start">
+                    <i class="fa-solid fa-star text-amber-400 text-sm"></i>
+                    <i class="fa-solid fa-star text-amber-400 text-sm"></i>
+                    <i class="fa-solid fa-star text-amber-400 text-sm"></i>
+                    <i class="fa-solid fa-star text-amber-400 text-sm"></i>
+                    <i class="fa-solid fa-star text-amber-400 text-sm"></i>
+                  </div>
+                  <p class="text-gray-300 text-base italic font-light leading-relaxed mb-6 text-center md:text-left">
+                    "From the custom glassmorphism menu design in the store to the service and coffee cup texture, everything screams luxury. It's the absolute premium coffee experience. I buy their whole beans for home brewing weekly."
+                  </p>
+                  <div class="text-center md:text-left">
+                    <h4 class="font-poppins font-bold text-white text-lg">Dr. Clara Thorne</h4>
+                    <p class="text-xs text-lightCoffee font-poppins uppercase tracking-widest font-medium">Local Regular & Professor</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Carousel Indicators / Dot Buttons -->
+        <div class="flex justify-center space-x-3 mt-8">
+          <button onclick="goToSlide(0)" class="carousel-dot w-3 h-3 rounded-full bg-lightCoffee/35 hover:bg-lightCoffee transition-colors focus:outline-none" aria-label="Slide 1"></button>
+          <button onclick="goToSlide(1)" class="carousel-dot w-3 h-3 rounded-full bg-lightCoffee/35 hover:bg-lightCoffee transition-colors focus:outline-none" aria-label="Slide 2"></button>
+          <button onclick="goToSlide(2)" class="carousel-dot w-3 h-3 rounded-full bg-lightCoffee/35 hover:bg-lightCoffee transition-colors focus:outline-none" aria-label="Slide 3"></button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. SPECIAL OFFER BANNER -->
+  <section class="py-16 bg-gradient-to-r from-[#0d0d0d] via-[#1a1310] to-[#0d0d0d] border-y border-white/5 overflow-hidden relative">
+    <div class="absolute inset-0 opacity-10 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-lightCoffee via-transparent to-transparent"></div>
+    <div class="max-w-5xl mx-auto px-6 relative z-10 text-center flex flex-col items-center">
+      <h3 class="font-poppins font-extrabold text-2xl sm:text-4xl text-creamAccent tracking-tight mb-4">
+        Get 20% Off Your First Coffee Order
+      </h3>
+      <p class="text-gray-300 text-sm sm:text-base font-light mb-8 max-w-xl">
+        Join our exclusive Midnight Club newsletter today to receive your 20% discount code and premium invites to private tasting events.
+      </p>
+      <button onclick="openOfferModal()" class="px-8 py-3.5 rounded-full bg-coffeeBrown hover:bg-lightCoffee text-creamAccent hover:text-primaryBg font-poppins font-semibold text-sm border border-[#A67B5B]/30 animate-pulse transition-all duration-300 hover:scale-105">
+        Claim Offer
+      </button>
+    </div>
+  </section>
+
+  <!-- 9. CONTACT SECTION -->
+  <section id="contact" class="py-24 sm:py-32 bg-primaryBg relative">
+    <div class="max-w-7xl mx-auto px-6 lg:px-12">
+      <!-- Section Header -->
+      <div class="text-center max-w-2xl mx-auto mb-20 reveal">
+        <span class="text-lightCoffee font-poppins text-xs font-semibold tracking-widest uppercase block mb-3">Reservations & Location</span>
+        <h2 class="font-poppins font-extrabold text-3xl sm:text-5xl text-white mb-4">Visit Our Sanctuary</h2>
+        <div class="w-20 h-1 bg-gradient-to-r from-coffeeBrown to-lightCoffee mx-auto mb-6"></div>
+      </div>
+
+      <!-- Content Split Grid -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-stretch">
+        <!-- Contact Information (Glassmorphism block) -->
+        <div class="lg:col-span-5 flex flex-col justify-between glass-card rounded-2xl p-8 sm:p-10 border border-white/5 reveal">
+          <div>
+            <h3 class="font-poppins font-bold text-2xl text-white mb-6">Contact Info</h3>
+            
+            <div class="space-y-8">
+              <!-- Location -->
+              <div class="flex items-start space-x-4">
+                <div class="w-10 h-10 rounded-full bg-coffeeBrown/10 border border-lightCoffee/20 text-lightCoffee flex items-center justify-center flex-shrink-0">
+                  <i class="fa-solid fa-location-dot"></i>
+                </div>
+                <div>
+                  <h4 class="font-poppins font-semibold text-creamAccent mb-1 text-sm">Our Location</h4>
+                  <p class="text-gray-400 text-sm leading-relaxed font-light">
+                    42 Vintage Boulevard, Suite 100<br>
+                    Brewing District, BD 90210
+                  </p>
+                </div>
+              </div>
+
+              <!-- Phone -->
+              <div class="flex items-start space-x-4">
+                <div class="w-10 h-10 rounded-full bg-coffeeBrown/10 border border-lightCoffee/20 text-lightCoffee flex items-center justify-center flex-shrink-0">
+                  <i class="fa-solid fa-phone"></i>
+                </div>
+                <div>
+                  <h4 class="font-poppins font-semibold text-creamAccent mb-1 text-sm">Call Us</h4>
+                  <p class="text-gray-400 text-sm leading-relaxed font-light hover:text-lightCoffee transition-colors">
+                    <a href="tel:+15556436444">+1 (555) MID-BREW</a>
+                  </p>
+                </div>
+              </div>
+
+              <!-- Email -->
+              <div class="flex items-start space-x-4">
+                <div class="w-10 h-10 rounded-full bg-coffeeBrown/10 border border-lightCoffee/20 text-lightCoffee flex items-center justify-center flex-shrink-0">
+                  <i class="fa-solid fa-envelope"></i>
+                </div>
+                <div>
+                  <h4 class="font-poppins font-semibold text-creamAccent mb-1 text-sm">Email Inquiries</h4>
+                  <p class="text-gray-400 text-sm leading-relaxed font-light hover:text-lightCoffee transition-colors">
+                    <a href="mailto:hello@midnightbrew.com">hello@midnightbrew.com</a>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Social Icons Block -->
+          <div class="pt-8 border-t border-white/10 mt-10">
+            <h4 class="font-poppins font-semibold text-xs uppercase tracking-wider text-gray-500 mb-4">Follow The Craft</h4>
+            <div class="flex space-x-4">
+              <a href="#" class="w-10 h-10 rounded-full bg-secondaryBg hover:bg-coffeeBrown text-gray-400 hover:text-creamAccent border border-white/5 flex items-center justify-center transition-all duration-300">
+                <i class="fa-brands fa-instagram"></i>
+              </a>
+              <a href="#" class="w-10 h-10 rounded-full bg-secondaryBg hover:bg-coffeeBrown text-gray-400 hover:text-creamAccent border border-white/5 flex items-center justify-center transition-all duration-300">
+                <i class="fa-brands fa-facebook-f"></i>
+              </a>
+              <a href="#" class="w-10 h-10 rounded-full bg-secondaryBg hover:bg-coffeeBrown text-gray-400 hover:text-creamAccent border border-white/5 flex items-center justify-center transition-all duration-300">
+                <i class="fa-brands fa-x-twitter"></i>
+              </a>
+              <a href="#" class="w-10 h-10 rounded-full bg-secondaryBg hover:bg-coffeeBrown text-gray-400 hover:text-creamAccent border border-white/5 flex items-center justify-center transition-all duration-300">
+                <i class="fa-brands fa-pinterest-p"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Contact Form (Glassmorphism block) -->
+        <form id="contact-form" onsubmit="handleContactSubmit(event)" class="lg:col-span-7 glass-card rounded-2xl p-8 sm:p-10 border border-white/5 flex flex-col justify-between reveal">
+          <div class="space-y-6">
+            <h3 class="font-poppins font-bold text-2xl text-white mb-6">Send A Message</h3>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <!-- Name -->
+              <div>
+                <label for="form-name" class="block font-poppins text-xs font-semibold text-creamAccent uppercase tracking-wider mb-2">Name</label>
+                <input type="text" id="form-name" required class="w-full bg-[#121212] border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-lightCoffee focus:ring-1 focus:ring-lightCoffee text-sm transition-all placeholder-gray-600" placeholder="John Doe">
+              </div>
+              
+              <!-- Email -->
+              <div>
+                <label for="form-email" class="block font-poppins text-xs font-semibold text-creamAccent uppercase tracking-wider mb-2">Email Address</label>
+                <input type="email" id="form-email" required class="w-full bg-[#121212] border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-lightCoffee focus:ring-1 focus:ring-lightCoffee text-sm transition-all placeholder-gray-600" placeholder="john@example.com">
+              </div>
+            </div>
+
+            <!-- Phone -->
+            <div>
+              <label for="form-phone" class="block font-poppins text-xs font-semibold text-creamAccent uppercase tracking-wider mb-2">Phone Number</label>
+              <input type="tel" id="form-phone" class="w-full bg-[#121212] border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-lightCoffee focus:ring-1 focus:ring-lightCoffee text-sm transition-all placeholder-gray-600" placeholder="+1 (555) 000-0000">
+            </div>
+
+            <!-- Message -->
+            <div>
+              <label for="form-message" class="block font-poppins text-xs font-semibold text-creamAccent uppercase tracking-wider mb-2">Message</label>
+              <textarea id="form-message" rows="5" required class="w-full bg-[#121212] border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-lightCoffee focus:ring-1 focus:ring-lightCoffee text-sm transition-all placeholder-gray-600 resize-none" placeholder="Tell us how we can help you or detail your custom catering request..."></textarea>
+            </div>
+          </div>
+
+          <button type="submit" class="mt-8 w-full py-4 rounded-xl bg-gradient-to-r from-coffeeBrown to-lightCoffee hover:from-lightCoffee hover:to-coffeeBrown text-white font-poppins font-semibold text-sm shadow-lg shadow-coffeeBrown/20 hover:scale-[1.02] transition-all duration-300 flex items-center justify-center space-x-2">
+            <i class="fa-regular fa-paper-plane mr-1 text-xs"></i>
+            <span>Send Message</span>
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- 10. FOOTER -->
+  <footer class="bg-black text-gray-400 pt-16 pb-8 border-t border-white/5 relative z-10">
+    <div class="max-w-7xl mx-auto px-6 lg:px-12 grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+      
+      <!-- Column 1: Brand -->
+      <div class="space-y-4">
+        <a href="#home" class="flex items-center space-x-3 group">
+          <div class="w-10 h-10 rounded-full bg-coffeeBrown flex items-center justify-center text-creamAccent shadow-lg group-hover:scale-115 transition-transform duration-300">
+            <i class="fa-solid fa-mug-hot text-lg"></i>
+          </div>
+          <span class="font-poppins font-bold text-xl tracking-wider text-white">
+            MIDNIGHT<span class="text-lightCoffee">BREW</span>
+          </span>
+        </a>
+        <p class="text-xs leading-relaxed font-light pt-2">
+          An elegant sanctuary designed for true coffee connoisseurs. We roast single-origin beans in-house to craft an ultimate sensory escape.
+        </p>
+      </div>
+
+      <!-- Column 2: Quick Links -->
+      <div>
+        <h4 class="font-poppins font-bold text-white text-sm uppercase tracking-widest mb-6">Quick Links</h4>
+        <ul class="space-y-3 text-xs font-light">
+          <li><a href="#home" class="hover:text-creamAccent transition-colors">Home</a></li>
+          <li><a href="#menu" class="hover:text-creamAccent transition-colors">Signature Menu</a></li>
+          <li><a href="#why-us" class="hover:text-creamAccent transition-colors">Why Choose Us</a></li>
+          <li><a href="#about" class="hover:text-creamAccent transition-colors">Our Legacy</a></li>
+          <li><a href="#gallery" class="hover:text-creamAccent transition-colors">Midnight Gallery</a></li>
+          <li><a href="#testimonials" class="hover:text-creamAccent transition-colors">Guest Reviews</a></li>
+          <li><a href="#contact" class="hover:text-creamAccent transition-colors">Visit Sanctuary</a></li>
+        </ul>
+      </div>
+
+      <!-- Column 3: Opening Hours -->
+      <div>
+        <h4 class="font-poppins font-bold text-white text-sm uppercase tracking-widest mb-6">Opening Hours</h4>
+        <ul class="space-y-3 text-xs font-light">
+          <li class="flex justify-between border-b border-white/5 pb-1">
+            <span>Monday - Friday</span>
+            <span class="text-creamAccent">6:00 AM - 11:00 PM</span>
+          </li>
+          <li class="flex justify-between border-b border-white/5 pb-1">
+            <span>Saturday</span>
+            <span class="text-creamAccent">7:00 AM - Midnight</span>
+          </li>
+          <li class="flex justify-between border-b border-white/5 pb-1">
+            <span>Sunday</span>
+            <span class="text-creamAccent">8:00 AM - 10:00 PM</span>
+          </li>
+          <li class="flex justify-between text-gray-500 pt-1">
+            <span>Private Tastings</span>
+            <span>By Appointment</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Column 4: Newsletter -->
+      <div>
+        <h4 class="font-poppins font-bold text-white text-sm uppercase tracking-widest mb-6">Midnight Club</h4>
+        <p class="text-xs font-light leading-relaxed mb-4">Subscribe for micro-lot arrival notifications and exclusive brewing workshops.</p>
+        <div class="relative mt-2">
+          <input type="email" id="club-email" class="w-full bg-secondaryBg border border-white/10 rounded-full py-2.5 pl-4 pr-12 text-xs text-white focus:outline-none focus:border-lightCoffee focus:ring-1 focus:ring-lightCoffee" placeholder="Enter your email">
+          <button onclick="handleSubscribe()" class="absolute right-1 top-1 w-8 h-8 rounded-full bg-coffeeBrown text-creamAccent flex items-center justify-center hover:bg-lightCoffee hover:text-primaryBg transition-colors" aria-label="Subscribe">
+            <i class="fa-solid fa-arrow-right text-xs"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Divider & Bottom copyright -->
+    <div class="max-w-7xl mx-auto px-6 lg:px-12 border-t border-white/5 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs font-light text-gray-600">
+      <p>&copy; 2026 Midnight Brew Roastery. All rights reserved.</p>
+      <div class="flex space-x-6">
+        <a href="#" class="hover:text-creamAccent transition-colors">Privacy Policy</a>
+        <a href="#" class="hover:text-creamAccent transition-colors">Terms of Service</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- BACK TO TOP BUTTON -->
+  <button id="back-to-top" class="fixed bottom-6 right-6 z-40 w-11 h-11 rounded-full bg-coffeeBrown text-creamAccent border border-lightCoffee/20 flex items-center justify-center shadow-lg shadow-black/50 opacity-0 translate-y-10 pointer-events-none transition-all duration-300 hover:bg-lightCoffee hover:text-primaryBg hover:scale-110" aria-label="Back to Top">
+    <i class="fa-solid fa-arrow-up text-sm"></i>
+  </button>
+
+  <!-- LIGHTBOX MODAL -->
+  <div id="lightbox-modal" class="fixed inset-0 z-50 bg-black/95 backdrop-blur-md hidden items-center justify-center p-4 transition-all duration-300 opacity-0">
+    <button onclick="closeLightbox()" class="absolute top-6 right-6 text-gray-400 hover:text-white transition-colors" aria-label="Close Gallery Modal">
+      <i class="fa-solid fa-xmark text-3xl"></i>
+    </button>
+    <div class="max-w-5xl w-full flex flex-col items-center">
+      <img id="lightbox-img" src="" alt="Enlarged gallery view" class="max-h-[80vh] rounded-xl object-contain shadow-2xl border border-white/5">
+      <p id="lightbox-caption" class="font-poppins text-creamAccent text-sm font-medium tracking-wide mt-5 text-center"></p>
+    </div>
+  </div>
+
+  <!-- SPECIAL OFFER MODAL -->
+  <div id="offer-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md hidden items-center justify-center p-4 opacity-0 transition-opacity duration-300">
+    <div class="glass-card max-w-md w-full rounded-2xl p-8 border border-white/10 shadow-2xl relative text-center">
+      <button onclick="closeOfferModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white transition-colors">
+        <i class="fa-solid fa-xmark text-xl"></i>
+      </button>
+      <div class="w-16 h-16 rounded-full bg-coffeeBrown/10 text-lightCoffee border border-lightCoffee/20 flex items-center justify-center text-3xl mx-auto mb-6">
+        🎉
+      </div>
+      <h3 class="font-poppins font-extrabold text-2xl text-white mb-2">Welcome to the Club</h3>
+      <p class="text-xs text-gray-400 leading-relaxed font-light mb-6">
+        Your 20% discount coupon code has been generated. Use it at checkout during your next visit.
+      </p>
+      <div class="bg-black/60 border border-dashed border-lightCoffee/40 rounded-xl py-3.5 mb-6">
+        <span class="font-poppins font-bold text-xl text-creamAccent tracking-widest uppercase selection:bg-lightCoffee select-all">MIDNIGHT20</span>
+      </div>
+      <p class="text-[10px] text-gray-500 mb-6">Code valid for all espresso, specialty blends, and single-origin coffees.</p>
+      <button onclick="closeOfferModal()" class="w-full py-3 rounded-xl bg-coffeeBrown hover:bg-lightCoffee text-creamAccent hover:text-primaryBg font-poppins font-semibold text-xs border border-[#A67B5B]/30 transition-all">
+        Awesome, Thanks!
+      </button>
+    </div>
+  </div>
+
+  <!-- CUSTOM VISUAL TOAST NOTIFICATION CONTAINER -->
+  <div id="toast-container" class="fixed bottom-6 left-6 z-50 flex flex-col gap-3 max-w-sm pointer-events-none"></div>
+
+
+  <!-- JAVASCRIPT LOGIC -->
+  <script src="script.js"></script>
+</body>
+</html>
